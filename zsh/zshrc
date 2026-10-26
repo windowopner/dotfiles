@@ -1,0 +1,40 @@
+# ~/dotfiles/zsh/zshrc — sourced from ~/.zshrc
+
+# Homebrew
+[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# History
+HISTSIZE=50000
+SAVEHIST=50000
+setopt share_history hist_ignore_dups hist_ignore_space
+
+# Runtimes (node etc. — reads .nvmrc)
+command -v mise >/dev/null && eval "$(mise activate zsh)"
+
+# Prompt + navigation
+command -v starship >/dev/null && eval "$(starship init zsh)"
+command -v zoxide  >/dev/null && eval "$(zoxide init zsh)"
+command -v fzf     >/dev/null && source <(fzf --zsh)
+
+# Catppuccin Mocha everywhere
+export BAT_THEME="Catppuccin Mocha"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A"
+command -v fd >/dev/null && export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude .git --exclude node_modules'
+
+# Aliases
+alias ls='eza --group-directories-first'
+alias ll='eza -la --git --group-directories-first'
+alias tree='eza --tree --level=2 --git-ignore'
+alias cat='bat -pp'
+alias lg='lazygit'
+alias c='cd ~/Codes'
+
+# Plugins (syntax-highlighting must be last)
+[ -n "$HOMEBREW_PREFIX" ] && {
+  source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh" 2>/dev/null
+  source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" 2>/dev/null
+}
