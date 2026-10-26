@@ -1,18 +1,17 @@
 # dotfiles
 
-Anthony's macOS dev setup — Catppuccin Mocha everywhere.
+Anthony's macOS dev setup — Catppuccin Mocha.
 
 ```bash
-git clone <this repo> ~/dotfiles && ~/dotfiles/install.sh
+~/dotfiles/install.sh                         # this Mac: Ghostty, font, colors, commit signing
+brew bundle --file ~/dotfiles/Brewfile        # new Mac: everything in the Brewfile
 ```
 
 | Path | What |
 |---|---|
-| `Brewfile` | every CLI tool, app and font |
-| `zsh/zshrc` | shell: mise, starship, zoxide, fzf, aliases, plugins |
-| `starship/starship.toml` | prompt |
-| `ghostty/config` | terminal |
-| `git/` | delta, sane defaults, global ignore |
-| `mise/config.toml` | Node 24 (reads `.nvmrc`) |
+| `Brewfile` | record of brew tools/apps on this Mac |
+| `zsh/zshrc` | zoxide, fzf, aliases, Catppuccin colors (sourced from `~/.zshrc`) |
+| `ghostty/config` | terminal (linked to `~/.config/ghostty/config`) |
+| `git/gitconfig` | delta + Catppuccin (included from `~/.gitconfig`) |
 
-Add a tool: put it in `Brewfile`, run `brew bundle --file ~/dotfiles/Brewfile`, commit.
+Node stays on nvm (Node 24) + corepack pnpm.

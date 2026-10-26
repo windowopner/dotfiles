@@ -1,42 +1,26 @@
-# Anthony's Brewfile — `brew bundle --file ~/dotfiles/Brewfile`
+# Anthony's Brewfile — full record of what's on this Mac.
+# On a new Mac: brew bundle --file ~/dotfiles/Brewfile
 tap "supabase/tap"
 
-# ── core dev ─────────────────────────────
-brew "git"
+# dev
 brew "gh"
-brew "mise"                 # runtime versions (replaces nvm)
-brew "uv"                   # python packages / venvs
-brew "pnpm"
-brew "vercel-cli"
+brew "uv"
 brew "supabase/tap/supabase"
 
-# ── shell ────────────────────────────────
-brew "starship"
+# shell & git
 brew "zoxide"
 brew "fzf"
 brew "eza"
 brew "bat"
-brew "zsh-autosuggestions"
-brew "zsh-syntax-highlighting"
-
-# ── git ──────────────────────────────────
 brew "git-delta"
 brew "lazygit"
 brew "gitleaks"
 
-# ── utils ────────────────────────────────
-brew "jq"
-brew "ripgrep"
-brew "fd"
-brew "btop"
-brew "dust"
-brew "xh"
-brew "tlrc"
-brew "litecli"
-
-# ── apps & fonts ─────────────────────────
+# apps & fonts
 cask "ghostty"
+cask "font-jetbrains-mono-nerd-font"
 cask "orbstack"
 cask "raycast"
 cask "db-browser-for-sqlite"
-cask "font-jetbrains-mono-nerd-font"
+
+# Node: nvm (Node 24) + corepack pnpm + `npm i -g vercel` — not managed by brew
